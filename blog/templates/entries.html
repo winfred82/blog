@@ -6,6 +6,7 @@
 <div>
     Customized Page Number:<input type="text" id="limit"/> <button id="btn_set_limit" type="submit">Go</button>
 </div>
+<a href="/entry/add" class="add_entry">Add Entry</a>
 {% for entry in entries %}
 {{ macros.render_entry(entry) }}
 {% endfor %}
