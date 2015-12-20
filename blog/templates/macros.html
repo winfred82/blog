@@ -11,7 +11,34 @@
         <h1>
             <a href="/entry/{{entry.id}}">{{ entry.title }}</a>
         </h1>
-        {{ entry.content | markdown}}<a href="/entry/{{entry.id}}/edit">Edit</a><br><a id="btn_del_entry" href="/entry/{{entry.id}}/delete">Delete</a>
+        {{ entry.content | markdown}}
+        <a href="/entry/{{entry.id}}/edit">Edit</a><br>
+        <button class="btn btn-default" data-href="/entry/{{entry.id}}/delete" data-toggle="modal" data-target="#confirm-delete">
+            Delete
+        </button>
     </div>
 </div>
 {% endmacro %}
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirmation
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this entry?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="javascript">
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+</script>
