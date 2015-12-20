@@ -11,7 +11,7 @@
         <h1>
             <a href="/entry/{{entry.id}}">{{ entry.title }}</a>
         </h1>
-        {{ entry.content | markdown}}<a href="/entry/{{entry.id}}/edit">Edit</a><br><a href="/entry/{{entry.id}}/edit">Delete</a>
+        {{ entry.content | markdown}}<a href="/entry/{{entry.id}}/edit">Edit</a><br><a id="btn_del_entry" href="/entry/{{entry.id}}/delete">Delete</a>
     </div>
 </div>
 {% endmacro %}

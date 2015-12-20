@@ -72,3 +72,12 @@ def edit_entry_post(id):
     session.commit()
     
     return redirect(url_for("entries"))
+    
+    
+@app.route("/entry/<int:id>/delete",methods=["GET"])
+def delete_entry_post(id):
+    entry=session.query(Entry).get(id)
+    session.delete(entry)
+    session.commit()
+    
+    return redirect(url_for("entries"))
